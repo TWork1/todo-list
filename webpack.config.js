@@ -1,6 +1,7 @@
 const path = require('path');
 const Htmlwebpackplugins = require('html-webpack-plugin');
 module.exports = {
+    mode: 'development',
     entry: './src/index.js',
     output: {
       filename: 'main.js',
@@ -22,6 +23,7 @@ module.exports = {
             }
         ]
       },
+      devtool: 'inline-source-map',
       plugins:[
         new Htmlwebpackplugins ({
             title:'Todo List',
