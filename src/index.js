@@ -19,7 +19,7 @@ dbutton.addEventListener('click',()=>{
   document.querySelector('#form').show()
   clearform()
 })
-document.querySelector('body').appendChild(dbutton)
+document.querySelector('footer').appendChild(dbutton)
 
 document.querySelector('#task-creation').addEventListener('submit',(e)=>{
   e.preventDefault()
