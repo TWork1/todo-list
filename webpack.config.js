@@ -24,10 +24,14 @@ module.exports = {
         ]
       },
       devtool: 'inline-source-map',
+      devServer: {
+        static: './dist',
+      },
       plugins:[
         new Htmlwebpackplugins ({
             title:'Todo List',
             template:'./src/index.html'
         })
-      ]
+      ],
+      
     };
