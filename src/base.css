@@ -1,11 +1,12 @@
 body{
+    position: relative;
     display: grid;
     grid-template-rows: 1fr 5fr 1fr;
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(to bottom, white, black);
+    margin: 0;
+    background-image: linear-gradient(to bottom, White, Gray);
 }
-/*background-image: linear-gradient(to bottom, rgb(26, 28, 29), darkblue);*/
 #dashboard{
     width: 80%;
     background-color: rgba(24, 23, 23, 0.267);

@@ -2,34 +2,44 @@ import './tod.css'
 export const dialogbox = (taskCard) =>{
      taskCard = document.createElement('div');
      taskCard.textContent = addinput.value;
+     taskCard.setAttribute('id', 'thecard');
 
         const dialog = document.createElement('dialog');
         dialog.setAttribute('id','task');
             const fieldset = document.createElement('fieldset');
+            fieldset.setAttribute('id','formname');
                 const taskform = document.createElement('form');
                 taskform.setAttribute('method','dialog');
                 taskform.setAttribute('id','form');
                     const legend = document.createElement('legend');
                     legend.textContent = addinput.value;
                 taskform.appendChild(legend);
-                    const priorityLabel = document.createElement('label');
-                    priorityLabel.setAttribute('for','priority');
-                    priorityLabel.textContent = 'Priority';
-                taskform.appendChild(priorityLabel);
-                    const priorityinput = document.createElement('select');
-                    priorityinput.setAttribute('id','priority');
-                    priorityinput.setAttribute('name','priority');
-                        const low = document.createElement('option');
-                        low.setAttribute('value','low');
-                        low.textContent = 'Low';
-                    priorityinput.appendChild(low);
-                        const mid = document.createElement('option');
-                        mid.textContent = 'Medium'
-                    priorityinput.appendChild(mid);
-                        const high = document.createElement('option');
-                        high.textContent = 'High';
-                    priorityinput.appendChild(high);
-                taskform.appendChild(priorityinput);
+                    const fieldsetradio = document.createElement('fieldset');
+                    fieldsetradio.setAttribute('id','checkboxes');
+                       fieldsetradio.innerHTML = 
+                       `<legend>Priority:</legend>
+
+                       <div>
+                         <input type="radio" id="none" name="priority" value="none" checked />
+                         <label for="none">none</label>
+                       </div>
+
+                       <div>
+                         <input type="radio" id="low" name="priority" value="low" />
+                         <label for="low">!</label>
+                       </div>
+                     
+                       <div>
+                         <input type="radio" id="medium" name="priority" value="medium" />
+                         <label for="medium">!!</label>
+                       </div>
+                     
+                       <div>
+                         <input type="radio" id="high" name="priority" value="high" />
+                         <label for="high">!!!</label>
+                       </div>
+                     </fieldset>`
+                taskform.appendChild(fieldsetradio);
                     const descriptionlabel = document.createElement('label');
                     descriptionlabel.setAttribute('for','description');
                     descriptionlabel.textContent = 'Notes';
@@ -38,15 +48,24 @@ export const dialogbox = (taskCard) =>{
                     descriptiontext.setAttribute('name','description');
                     descriptiontext.setAttribute('id','description');
                 taskform.appendChild(descriptiontext);
-                    const submit = document.createElement('input');
-                    submit.setAttribute('type','submit')
+                    const submit = document.createElement('Button');
+                    submit.setAttribute('class','close');
+                    submit.textContent = 'X';
+                    submit.addEventListener('click',(e)=>{
+                        dialog.close()
+                    })
                 taskform.appendChild(submit);
+                    const deleted =  document.createElement('Button');
+                    deleted.textContent ='Delete';
+                    deleted.addEventListener('click',()=>{
+                        deleted.parentNode.parentNode.parentNode.parentNode.remove()
+                    })
+                taskform.appendChild(deleted);
             fieldset.appendChild(taskform);
         dialog.appendChild(fieldset);
     taskCard.appendChild(dialog);
     taskCard.addEventListener('click',()=>{
         dialog.show()
-        priorityinput.parentNode.parentNode.parentNode.parentNode.setAttribute('class',`${priorityinput.value}`)
     })
 document.querySelector('#dashboard').appendChild(taskCard);
 }

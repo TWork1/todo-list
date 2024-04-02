@@ -1,9 +1,47 @@
-div .low{
-    color: green;
+@font-face {
+    font-family: 'Title-card';
+    src: url(/src/functionality/fonts/RemachineScriptPersonalUseOnly-yZL3.ttf);
 }
-div .Medium{
-    color: yellow;
+#task{
+    position: absolute;
+    top: 10vh;
+    right: 75vw;
+    border-radius: 10px;
 }
-div .High{
+#task label{
+    font-family: 'Title-card';
+    font-size: 200%;
+}
+#task fieldset{
+    padding: 0%;
+    margin: 0%;
+}
+#task fieldset form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#task fieldset form legend{
+    align-self: center;
+    font-family: 'Title-card';
+    font-size: 225%;
+}
+#task #priority{
     color: red;
+    width: 50%;
+}
+#task #checkboxes{
+    display: flex;
+    gap: 5%;
+}
+#task .close{
+    position: absolute;
+    width: 25px;
+    right: 8.5%;
+    border-radius: 50%;
+    color: white;
+    background-color: red;
+}
+#task #formname{
+    border: none;
 }
