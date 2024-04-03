@@ -1,8 +1,12 @@
 import './tod.css'
+import closeit from './Images/close.svg'
+import deleit from './Images/delete.svg'
 export const dialogbox = (taskCard) =>{
      taskCard = document.createElement('div');
-     taskCard.textContent = addinput.value;
      taskCard.setAttribute('id', 'thecard');
+     const taskname = document.createElement('p');
+     taskname.textContent = addinput.value;
+     taskCard.appendChild(taskname);
 
         const dialog = document.createElement('dialog');
         dialog.setAttribute('id','task');
@@ -50,16 +54,21 @@ export const dialogbox = (taskCard) =>{
                 taskform.appendChild(descriptiontext);
                     const submit = document.createElement('Button');
                     submit.setAttribute('class','close');
-                    submit.textContent = 'X';
                     submit.addEventListener('click',(e)=>{
                         dialog.close()
                     })
+                        const closes = document.createElement('img');
+                        closes.setAttribute('src', closeit)
+                    submit.appendChild(closes)
                 taskform.appendChild(submit);
                     const deleted =  document.createElement('Button');
-                    deleted.textContent ='Delete';
+                    deleted.setAttribute('id','delete')
                     deleted.addEventListener('click',()=>{
                         deleted.parentNode.parentNode.parentNode.parentNode.remove()
                     })
+                        const deleteit = document.createElement('img');
+                        deleteit.setAttribute('src', deleit );
+                    deleted.appendChild(deleteit)
                 taskform.appendChild(deleted);
             fieldset.appendChild(taskform);
         dialog.appendChild(fieldset);
@@ -67,14 +76,46 @@ export const dialogbox = (taskCard) =>{
     taskCard.addEventListener('click',()=>{
         dialog.show()
     })
+    move(dialog,descriptiontext);
 document.querySelector('#dashboard').appendChild(taskCard);
 }
 const addinput = document.createElement('input');
 document.querySelector('header').appendChild(addinput);
 addinput.addEventListener('keypress',(e)=>{
     if(e.key === 'Enter'){
+        if(addinput.value !== ''){
         e.defaultPrevented;
         dialogbox(addinput.value)
         addinput.value =''
-    }
+    }}
 })
+
+const move = (moved,exception) =>{
+    let move  = document.querySelector('body'),
+    x=0 , 
+    y=0,
+    mousedown = false;
+    moved.addEventListener('mousedown',(e)=>{
+    // set mouse state to true 
+    if(e.target !== exception){
+    mousedown = true; 
+    // subtract offset 
+    x = moved.offsetLeft - e.clientX; 
+    y = moved.offsetTop - e.clientY; 
+    e.preventDefault(); // prevent browser's default drag behavior 
+    }}, true);
+
+    document.addEventListener('mouseup', (e)=> { // Notice the change here 
+        // set mouse state to false 
+        mousedown = false; 
+    }, true); 
+
+    move.addEventListener('mousemove', (e)=> { 
+        // Is mouse pressed? 
+        if (mousedown) { 
+            // now we calculate the difference 
+            moved.style.left = e.clientX + x + 'px'; 
+            moved.style.top = e.clientY + y + 'px'; 
+        } 
+    }, true); 
+}

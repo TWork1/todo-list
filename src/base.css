@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Title-card';
+    src: url(/src/functionality/fonts/RemachineScriptPersonalUseOnly-yZL3.ttf);
+}
 body{
     position: relative;
     display: grid;
@@ -5,12 +9,28 @@ body{
     height: 100vh;
     width: 100vw;
     margin: 0;
-    background-image: linear-gradient(to bottom, White, Gray);
+}
+#dashboard::-webkit-scrollbar{
+    display: none;
 }
 #dashboard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 32%;
     width: 80%;
-    background-color: rgba(24, 23, 23, 0.267);
     justify-self: center;
     flex: none;
+    padding: 5%;
     margin: 0px;
+    border-style:outset;
+    border-radius: 10px;
+    overflow-y: scroll;
+    gap:5%;
+}
+#dashboard #thecard{
+    padding-left: 10%;
+    background-color: gray;
+    border-radius: 12px;
+    display: flex;
+    height: 100%;
 }
