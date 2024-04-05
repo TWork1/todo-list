@@ -1,6 +1,11 @@
 import './tod.css'
 import closeit from './Images/close.svg'
 import deleit from './Images/delete.svg'
+import { format } from 'date-fns'
+
+format(new Date(4, 5, 24), "mm-dd-yyyy")
+
+
 export const dialogbox = (taskCard) =>{
      taskCard = document.createElement('div');
      taskCard.setAttribute('id', 'thecard');
@@ -89,7 +94,6 @@ addinput.addEventListener('keypress',(e)=>{
         addinput.value =''
     }}
 })
-
 const move = (moved,exception) =>{
     let move  = document.querySelector('body'),
     x=0 , 
@@ -119,3 +123,22 @@ const move = (moved,exception) =>{
         } 
     }, true); 
 }
+const dudate = (card,month,day,year)=>{
+    card.textContent = `${new Date(month,day,year)}`
+}
+
+
+const creatediv = (name,parent) =>{
+    name = document.createElementl('div');
+    parent.appendChild(name);
+        const addtext = (text)=>{
+            name.textcontent = text;
+        return {addtext}
+    }
+}
+const createInput = (name,type,parent) =>{
+    name = document.createElement('input');
+    name.setAttribute('type',`${type}`);
+    parent.appendChild(name);
+}
+createInput(`test`,`text`,document.querySelector('body'))
